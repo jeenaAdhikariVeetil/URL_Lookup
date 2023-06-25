@@ -8,12 +8,7 @@ Description
    
    For eg : Data is mapped bi directionally as follows
    
-    From:                                         To:
-/products                                       /Fashion/
-/products?gender=female                         /Women/
-/products?tag=5678                              /Boat-Shoes/
-/products?gender=female&tag=123&tag=1234         /Women/Shoes/
-/products?brand=123                              /Adidas/
+ <img width="536" alt="image" src="https://github.com/jeenaAdhikariVeetil/URL_Lookup/assets/108806756/94f4539c-7236-4aa2-9a2f-3562b850c4ee">
 
 
 2. API with resource path as "/url/lookup/params" is used to consume the list of parameterized URLs and returns a map of provided parameterized URLs as keys
