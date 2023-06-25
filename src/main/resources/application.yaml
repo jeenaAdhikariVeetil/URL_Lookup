@@ -1,0 +1,11 @@
+server:
+  port: 8088
+spring:
+  rabbitmq:
+    listener:
+      simple:
+        concurrency: 4
+        max-concurrency: 8
+        retry:
+          initial-interval: 5000
+          max-attempts: 3
