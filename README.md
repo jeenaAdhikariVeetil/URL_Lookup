@@ -6,9 +6,14 @@ Description
 
 1. The application provides APIs which process lookup URLs in bi-directionally.
    
-   For eg : Data is mapped bi directionally as follows
+   For eg : Data is mapped bi-directionally as follows
    
- <img width="536" alt="image" src="https://github.com/jeenaAdhikariVeetil/URL_Lookup/assets/108806756/94f4539c-7236-4aa2-9a2f-3562b850c4ee">
+ From: 													To:
+/products 												/Fashion/
+/products?gender=female 								/Women/
+/products?tag=5678 										/Boat-Shoes/
+/products?gender=female&tag=123&tag=1234 				/Women/Shoes/
+/products?brand=123 									/Adidas/
 
 
 2. API with resource path as "/url/lookup/params" is used to consume the list of parameterized URLs and returns a map of provided parameterized URLs as keys
@@ -18,18 +23,18 @@ Description
    parameterized URLs as values.
    
 4. Common business framework is used to search for corresponding param and pretty url from the storage map.
-   if there is no exact match found in the lookup, a best match will be retured as per the program logic.
+   if there is no exact match found in the lookup, a best match will be returned as per the program logic.
    If no match was found,it returns the provided URL itself.
 
 5. The end points can perform well for an input list of up to 100 URLs, each with up to 100 params, looking up in ~1 million key-value pairs.
      
-6. RabbitMQ concurrency is leveraged to enhance the perfomance. ParamConsumer and PrettyConsumer to handle the logic seperately with the common utility framework.
+6. RabbitMQ concurrency is leveraged to enhance the performance. ParamConsumer and PrettyConsumer to handle the logic separately with the common utility framework.
      
      Current implementation makes use of 4 concurrent consumers which can be modified according to the load expected in a single request.
    
-7. BidiMap is used as in memory storage and bi directional lookup.
+7. BidiMap is used as in memory storage and bi-directional lookup.
    
-8. Concurrent Hashmap used to insert the corresponding response for multi threaded environment.
+8. Concurrent Hashmap used to insert the corresponding response for multi-threaded environment.
     
 9. Junit test cases are added for controller and service implementation classes. 
 
@@ -42,7 +47,7 @@ Assumptions
 
 3. URLs cannot be empty or null.
 
-4. Expected urls count is assumeed to be 50,000. This is set as the initial value for Concurrent hashmap.
+4. Expected urls count is assumed to be 50,000. This is set as the initial value for Concurrent hashmap.
 
 
 Technologies Used
@@ -62,10 +67,10 @@ Improvements
 
 2. To improve the storage capacity and enhance the look up capabilities an in memory cache like Redis can be used.
 
-3. To imporve the latency and throughput,any other kind of mutithreaded framework like executor service or asynchronus event processing architectures could be introduced. 
+3. To improve the latency and throughput,any other kind of multi-threaded framework like executor service or asynchronus event processing architectures could be introduced. 
    eg  LAMAX Disruptor.
    
-4. A better algorithm for look up operations like  trie or a prefix tree datastructure could be used.
+4. A better algorithm for look up operations like  trie or a prefix tree data structure could be used.
  
 5. Scope for better test coverage.
 
